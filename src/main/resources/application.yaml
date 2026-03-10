@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://abhinavtrivedii_db_user:L9X5llrwDFpKKG3Y@cluster0.foxflgi.mongodb.net/?retryWrites=true&w=majority
+      uri: mongodb+srv://Username:Password@cluster0.foxflgi.mongodb.net/?retryWrites=true&w=majority
       database: journal_db
       auto-index-creation: true
 server:
