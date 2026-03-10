@@ -4,7 +4,8 @@ spring:
       uri: mongodb+srv://abhinavtrivedii_db_user:L9X5llrwDFpKKG3Y@cluster0.foxflgi.mongodb.net/?retryWrites=true&w=majority
       database: journal_db
       auto-index-creation: true
-
+server:
+  port: 8081
 # Set the logging level to ERROR to reduce log verbosity
 #logging:level:root: ERROR
 
