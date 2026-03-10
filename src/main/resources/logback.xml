@@ -1,0 +1,35 @@
+<configuration>
+    <appender name ="myConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    // It is  not recommended to use FileAppender in production, consider using RollingFileAppender instead as it will
+    // automatically roll over the log files based on size or time, preventing the log files from growing indefinitely.
+    <!--<appender name ="myFileAppender" class = "ch.qos.logback.core.FileAppender">
+        <file>logs/app.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>-->
+
+    <appender name="myFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/journalApp.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>logs/journalApp-%d{yy-MM-dd_HH-mm}.log</fileNamePattern>
+            <!-- keep 30 days worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="myConsoleAppender"/>
+        <appender-ref ref="myFileAppender"/>
+    </root>
+</configuration>

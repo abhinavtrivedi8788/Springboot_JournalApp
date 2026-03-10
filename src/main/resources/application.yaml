@@ -1,0 +1,16 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://abhinavtrivedii_db_user:L9X5llrwDFpKKG3Y@cluster0.foxflgi.mongodb.net/?retryWrites=true&w=majority
+      database: journal_db
+      auto-index-creation: true
+
+# Set the logging level to ERROR to reduce log verbosity
+#logging:level:root: ERROR
+
+# Set the logging level for the net.engineeringdigest.journal package to ERROR
+#logging:level:net:engineeringdigest:journal: ERROR
+
+# set the logging off for specific class
+#logging:level:net:engineeringdigest:journal:service:UserService: OFF
+
