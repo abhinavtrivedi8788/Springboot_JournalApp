@@ -1,11 +1,11 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://Username:Password@cluster0.foxflgi.mongodb.net/?retryWrites=true&w=majority
-      database: journal_db
+      uri: mongodb+srv://UserName:Password@cluster0.foxflgi.mongodb.net/?retryWrites=true&w=majority
+      database: DB Name
       auto-index-creation: true
 server:
-  port: 8081
+  port: 8080
 # Set the logging level to ERROR to reduce log verbosity
 #logging:level:root: ERROR
 
