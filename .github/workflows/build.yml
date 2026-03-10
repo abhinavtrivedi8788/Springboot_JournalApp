@@ -35,7 +35,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           mvn -B verify -DskipTests sonar:sonar \
-          -Dsonar.projectKey=abhinavtrivedi8788_abhinavtrivedi8788 \
+          -Dsonar.projectKey=abhinavtrivedi8788_Springboot_JournalApp \
           -Dsonar.organization=abhinavtrivedi8788 \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.login=${SONAR_TOKEN}
