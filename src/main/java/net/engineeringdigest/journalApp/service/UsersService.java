@@ -2,7 +2,9 @@ package net.engineeringdigest.journalApp.service;
 
 
 import lombok.extern.slf4j.Slf4j;
+import net.engineeringdigest.journalApp.entity.JournalCacheEntity;
 import net.engineeringdigest.journalApp.entity.Users;
+import net.engineeringdigest.journalApp.repository.JournalCacheRepository;
 import net.engineeringdigest.journalApp.repository.UsersRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ import java.util.Optional;
 @Slf4j
 public class UsersService {
 
+    @Autowired
+    private JournalCacheRepository journalCacheRepository;
 
     @Autowired
     private UsersRepository usersRepository;
@@ -72,5 +76,9 @@ public class UsersService {
         } else {
             return null;
         }
+    }
+
+    public JournalCacheEntity saveCacheInDB(JournalCacheEntity cache) {
+        return journalCacheRepository.save(cache);
     }
 }

@@ -1,5 +1,6 @@
 package net.engineeringdigest.journalApp.controller;
 
+import net.engineeringdigest.journalApp.entity.JournalCacheEntity;
 import net.engineeringdigest.journalApp.entity.Users;
 import net.engineeringdigest.journalApp.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,10 @@ public class PublicController {
     @PostMapping("/register")
     public ResponseEntity<Users> createUser(@RequestBody Users users) {
         return new ResponseEntity<>(usersService.saveUserAndPassword(users), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/config")
+    public ResponseEntity<?> addConfigurationInDB(@RequestBody JournalCacheEntity cacheEntity) {
+        return new ResponseEntity<>(usersService.saveCacheInDB(cacheEntity), HttpStatus.CREATED);
     }
 }
