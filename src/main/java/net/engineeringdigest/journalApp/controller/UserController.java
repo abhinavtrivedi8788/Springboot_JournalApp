@@ -49,6 +49,8 @@ public class UserController {
         updatedUser.setUserName(users.getUserName());
         updatedUser.setPassword(users.getPassword());
         updatedUser.setRoles(users.getRoles());
+        updatedUser.setEmail(users.getEmail());
+        updatedUser.setSentimentAnalysisEnabled(users.isSentimentAnalysisEnabled());
         usersService.saveUserAndPassword(updatedUser);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
