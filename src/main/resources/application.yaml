@@ -5,6 +5,11 @@ spring:
       database: YOUR_DATABASE
       auto-index-creation: true
 
+    redis:
+        host: localhost
+        port: 6379
+
+
   mail:
     host: smtp.gmail.com
     port: 587
@@ -24,7 +29,7 @@ server:
 
 weather:
   api:
-    key: Key
+    key: key
 # Set the logging level to ERROR to reduce log verbosity
 #logging:level:root: ERROR
 

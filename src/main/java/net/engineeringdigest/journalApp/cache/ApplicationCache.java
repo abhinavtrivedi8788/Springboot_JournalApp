@@ -22,10 +22,11 @@ public class ApplicationCache {
     @Autowired
     private JournalCacheRepository journalCacheRepository;
 
-    private Map<String,String> APP_CACHE = new HashMap<>();
+    private Map<String,String> APP_CACHE ;
 
     @PostConstruct
     private void loadCache(){
+        APP_CACHE = new HashMap<>();
         journalCacheRepository.findAll().forEach(journalCache -> {
             APP_CACHE.put(journalCache.getCacheId(), journalCache.getCacheData());
         });
