@@ -1,15 +1,30 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://YOUR_USER:YOUR_PASSWORD@cluster0.foxflgi.mongodb.net/?retryWrites=true&w=majority
-      database: YOUR_DATABASE
+      uri: mongodb+srv://Dummy_User:Dummy_Passord@cluster0.foxflgi.mongodb.net/?retryWrites=true&w=majority
+      database: journal_db
       auto-index-creation: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: mail Id
+    password: 16 digits App password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            trust: smtp.gmail.com
+
 server:
   port: 8080
 
 weather:
   api:
-    key: YOUR_KEY
+    key: Key
 # Set the logging level to ERROR to reduce log verbosity
 #logging:level:root: ERROR
 
