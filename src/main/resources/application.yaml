@@ -37,6 +37,10 @@ jwt:
   api:
     key: SECRET
 
+
+springdoc:
+  swagger-ui:
+    path: /docs
 # Set the logging level to ERROR to reduce log verbosity
 #logging:level:root: ERROR
 
