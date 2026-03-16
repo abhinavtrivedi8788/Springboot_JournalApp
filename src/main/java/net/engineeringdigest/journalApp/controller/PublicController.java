@@ -1,5 +1,7 @@
 package net.engineeringdigest.journalApp.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import net.engineeringdigest.journalApp.config.security.UserDetailsServiceImpl;
 import net.engineeringdigest.journalApp.config.security.jwt.JwtUtility;
 import net.engineeringdigest.journalApp.entity.JournalCacheEntity;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/public")
+@Tag(name = "Public API's")
 public class PublicController {
 
     @Autowired
@@ -36,11 +39,13 @@ public class PublicController {
 
     // Endpoint to create a new user without  password encoding
     @PostMapping("/register")
+    @Operation(summary = "Sign Up")
     public ResponseEntity<Users> createUser(@RequestBody Users users) {
         return new ResponseEntity<>(usersService.saveUserAndPassword(users), HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
+    @Operation(summary = "API to Log in")
     public ResponseEntity<String> login(@RequestBody Users users) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(users.getUserName(), users.getPassword()));

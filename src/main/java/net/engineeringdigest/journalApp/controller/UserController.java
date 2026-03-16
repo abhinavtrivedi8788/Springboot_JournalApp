@@ -1,6 +1,7 @@
 package net.engineeringdigest.journalApp.controller;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import net.engineeringdigest.journalApp.entity.Users;
 import net.engineeringdigest.journalApp.externalApi.ExternalService;
 import net.engineeringdigest.journalApp.externalApi.WeatherModel;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
+@Tag(name = "Users API's")
 public class UserController {
 
     @Autowired

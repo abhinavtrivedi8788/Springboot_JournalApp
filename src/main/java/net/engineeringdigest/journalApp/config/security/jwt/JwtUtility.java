@@ -33,7 +33,7 @@ public class JwtUtility {
                 .header().empty().add("typ","JWT")
                 .and()
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis()+ 1000 * 60 * 2)) // Expiration in next 2 minutes
+                .expiration(new Date(System.currentTimeMillis()+ 1000 * 60 * 60)) // Expiration in next 2 minutes
                 .signWith(createSignature())
                 .compact();
     }
