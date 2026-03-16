@@ -25,9 +25,11 @@ public class Users {
     @NonNull
     @Indexed(unique = true)
     private String userName;
-
     private String password;
     private List<String> roles;
+    private String email;
+    private boolean sentimentAnalysisEnabled;
+
 
     @DBRef
     private List<JournalEntries> journalEntries = new ArrayList<>();
@@ -62,6 +64,22 @@ public class Users {
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isSentimentAnalysisEnabled() {
+        return sentimentAnalysisEnabled;
+    }
+
+    public void setSentimentAnalysisEnabled(boolean sentimentAnalysisEnabled) {
+        this.sentimentAnalysisEnabled = sentimentAnalysisEnabled;
     }
 
     public List<JournalEntries> getJournalEntries() {

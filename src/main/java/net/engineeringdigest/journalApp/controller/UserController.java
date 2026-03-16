@@ -2,6 +2,8 @@ package net.engineeringdigest.journalApp.controller;
 
 
 import net.engineeringdigest.journalApp.entity.Users;
+import net.engineeringdigest.journalApp.externalApi.ExternalService;
+import net.engineeringdigest.journalApp.externalApi.WeatherModel;
 import net.engineeringdigest.journalApp.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,9 @@ public class UserController {
 
     @Autowired
     private UsersService usersService;
+
+    @Autowired
+    private ExternalService externalService;
 
     @GetMapping
     public ResponseEntity<List<Users>> getAllJournalEntries() {
@@ -44,6 +49,8 @@ public class UserController {
         updatedUser.setUserName(users.getUserName());
         updatedUser.setPassword(users.getPassword());
         updatedUser.setRoles(users.getRoles());
+        updatedUser.setEmail(users.getEmail());
+        updatedUser.setSentimentAnalysisEnabled(users.isSentimentAnalysisEnabled());
         usersService.saveUserAndPassword(updatedUser);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
@@ -54,5 +61,16 @@ public class UserController {
         String userName = authentication.getName();
         usersService.deleteUsersByUsername(userName);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/external")
+    public ResponseEntity<?> testExternalService() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        WeatherModel weatherResponse = externalService.getDataFromExternalApi("MUMBAI");
+
+        return new ResponseEntity<>("Hello..!! " + userName+ " is calling external service to check  weather of :  "
+                + weatherResponse.getLocation().getName() + " that is  "+ weatherResponse.getCurrent().getTemperature()
+                + " and actually feels like : "+weatherResponse.getCurrent().getFeelslike() , HttpStatus.OK);
     }
 }
