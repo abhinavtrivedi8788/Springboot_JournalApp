@@ -5,6 +5,15 @@ spring:
       database: YOUR_DATABASE
       auto-index-creation: true
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: client id
+            client-secret: secret
+
+
   redis:
     host: host
     port: port
