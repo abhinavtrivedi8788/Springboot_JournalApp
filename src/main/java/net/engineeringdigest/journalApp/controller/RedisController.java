@@ -2,6 +2,7 @@ package net.engineeringdigest.journalApp.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import net.engineeringdigest.journalApp.scheduler.UserWeatherAPI;
+import net.engineeringdigest.journalApp.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,10 +19,15 @@ public class RedisController {
     @Autowired
     private UserWeatherAPI userWeatherAPI;
 
+    @Autowired
+    private EmailService mailSender;
+
     @GetMapping("/{city}")
     public String getWeatherDataForCache(@PathVariable  String city) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
-        return userWeatherAPI.getWeatherDataForCache(city,userName);
+        String weatherDataForCache = userWeatherAPI.getWeatherDataForCache(city, userName);
+        mailSender.sendEmail("abhinavtrivedii@gmail.com","Weather Update of : "+city,weatherDataForCache);
+        return weatherDataForCache;
     }
 }
