@@ -1,8 +1,8 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://YOUR_USER:YOUR_PASSWORD@cluster0.foxflgi.mongodb.net/?retryWrites=true&w=majority
-      database: YOUR_DATABASE
+      uri: ${MONGO_URI}
+      database: ${DB_NAME}
       auto-index-creation: true
 
   security:
@@ -10,22 +10,20 @@ spring:
       client:
         registration:
           google:
-            client-id: client id
-            client-secret: secret
-
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
 
   redis:
-    host: host
-    port: port
-    username: default
-    password: PWD
-
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+    username: ${REDIS_USERNAME}
+    password: ${REDIS_PASSWORD}
 
   mail:
     host: smtp.gmail.com
     port: 587
-    username: mail Id
-    password: 16 digits app password generated from google account (dummy = 1234567890123456)
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -36,26 +34,16 @@ spring:
             trust: smtp.gmail.com
 
 server:
-  port: 8080
+  port: {PORT_NUMBER}
 
 weather:
   api:
-    key: KEY
+    key: ${WEATHER_API_KEY}
 
 jwt:
   api:
-    key: SECRET
-
+    key: ${JWT_SECRET}
 
 springdoc:
   swagger-ui:
     path: /docs
-# Set the logging level to ERROR to reduce log verbosity
-#logging:level:root: ERROR
-
-# Set the logging level for the net.engineeringdigest.journal package to ERROR
-#logging:level:net:engineeringdigest:journal: ERROR
-
-# set the logging off for specific class
-#logging:level:net:engineeringdigest:journal:service:UserService: OFF
-

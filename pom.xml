@@ -14,7 +14,7 @@
     <name>Journal App</name>
     <description>E2EE Journal App</description>
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <sonar.projectKey>abhinavtrivedi8788_Springboot_JournalApp</sonar.projectKey>
         <sonar.organization>abhinavtrivedi8788</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
+            <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -76,6 +76,18 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>1.7.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!--This dependency adds automatic HTTP request & response logging to your Spring Boot app.-->
+        <dependency>
+            <groupId>org.zalando</groupId>
+            <artifactId>logbook-spring-boot-starter</artifactId>
+            <version>3.7.2</version>
         </dependency>
 
     </dependencies>
