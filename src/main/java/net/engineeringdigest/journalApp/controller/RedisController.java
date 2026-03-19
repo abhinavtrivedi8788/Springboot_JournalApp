@@ -22,7 +22,7 @@ public class RedisController {
     @Autowired
     private EmailService mailSender;
 
-    @GetMapping("/{city}")
+    @GetMapping(value = "/{city}",produces = "text/plain")
     public String getWeatherDataForCache(@PathVariable  String city) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
