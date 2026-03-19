@@ -27,7 +27,7 @@ public class RedisController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
         String weatherDataForCache = userWeatherAPI.getWeatherDataForCache(city, userName);
-        mailSender.sendEmail("abhinavtrivedii@gmail.com","Weather Update of : "+city,weatherDataForCache);
+        mailSender.sendEmail("abhinavtrivedii@gmail.com","Weather Updates of : "+city,weatherDataForCache);
         return weatherDataForCache;
     }
 }
